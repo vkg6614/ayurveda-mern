@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.004d00d6.css",
+    "main.js": "/static/js/main.6c52c3cf.js",
+    "static/media/rectangle.png": "/static/media/rectangle.988f958a92bf376b9473.png",
+    "static/media/bottom-header.png": "/static/media/bottom-header.3fe9e3f7d66c4a36bf24.png",
+    "static/media/ARSH-logo.jpg": "/static/media/ARSH-logo.f4bf104738cf8aed1eae.jpg",
+    "index.html": "/index.html",
+    "main.004d00d6.css.map": "/static/css/main.004d00d6.css.map",
+    "main.6c52c3cf.js.map": "/static/js/main.6c52c3cf.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.004d00d6.css",
+    "static/js/main.6c52c3cf.js"
+  ]
+}

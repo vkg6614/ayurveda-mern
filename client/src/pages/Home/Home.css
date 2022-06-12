@@ -1,0 +1,36 @@
+.header-container {
+  position: relative;
+  height: 445px;
+  margin: 0 auto;
+  width: 90%;
+}
+
+.header-container img {
+  width: 100%;
+}
+
+.header-container h1 {
+  position: absolute;
+  left: 50%;
+}
+
+.header-container h1:nth-child(2) {
+  font-family: "Bebas Neue", cursive;
+  top: 32%;
+  line-height: 153px;
+  font-size: 137px;
+  width: 815px;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.header-container h1:nth-child(3) {
+  top: 48%;
+  width: 815px;
+  height: 192px;
+  font-family: "Licorice", cursive;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  font-size: 169px;
+  color: #76bb68;
+}
