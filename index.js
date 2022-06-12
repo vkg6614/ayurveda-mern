@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const path = require("path");
 
 const productRoute = require("./routes/productRoutes.js");
 
@@ -15,9 +16,9 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.send("working");
-});
+// app.get("/", (req, res) => {
+//   res.send("working");
+// });
 
 app.use("/products", productRoute);
 
@@ -31,14 +32,11 @@ mongoose
   )
   .catch((error) => console.log(error.message));
 
-if (process.env.NODE_ENV == "production") {
-  const path = require("path");
+app.use(express.static(path.join(__dirname, "./client/build")));
 
-  app.get("/", (req, res) => {
-    app.use(express.static(path.join(__dirname, "./client/build")));
-    res.sendFile(path.join(__dirname, "./client/build/index.html"));
-  });
-}
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
 
 // mongoose.set("useFindAndModify", false);
 // DB_URL=mongodb://localhost:27017/memory
