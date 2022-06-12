@@ -8,7 +8,7 @@ const path = require("path");
 const productRoute = require("./routes/productRoutes.js");
 
 const app = express();
-dotenv.config();
+dotenv.config("/");
 
 const port = process.env.PORT || 5000;
 
@@ -25,7 +25,7 @@ app.use("/products", productRoute);
 app.use(express.static(path.join(__dirname, "./client/build")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.h"));
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
 mongoose
