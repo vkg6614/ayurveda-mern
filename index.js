@@ -8,7 +8,7 @@ const path = require("path");
 const productRoute = require("./routes/productRoutes.js");
 
 const app = express();
-dotenv.config("/hgfh");
+dotenv.config();
 
 const port = process.env.PORT || 5000;
 
