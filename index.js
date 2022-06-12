@@ -17,15 +17,6 @@ app.use(cors());
 
 app.use("/products", productRoute);
 
-if (process.env.NODE_ENV == "production") {
-  const path = require("path");
-
-  app.get("/", (req, res) => {
-    app.use(express.static(path.resolve(__dirname, "client", "build")));
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-  });
-}
-
 mongoose
   .connect(process.env.DB_URL, {
     useNewUrlParser: true,
@@ -35,6 +26,15 @@ mongoose
     app.listen(port, () => console.log(`server running on port ${port}`))
   )
   .catch((error) => console.log(error.message));
+
+if (process.env.NODE_ENV == "production") {
+  const path = require("path");
+
+  app.get("/", (req, res) => {
+    app.use(express.static(path.resolve(__dirname, "client", "build")));
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 // mongoose.set("useFindAndModify", false);
 // DB_URL=mongodb://localhost:27017/memory
