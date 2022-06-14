@@ -11,14 +11,10 @@ const app = express();
 dotenv.config();
 
 const port = process.env.PORT || 5000;
-
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
-
-app.get("/", (req, res) => {
-  res.send("working");
-});
+app.use(express.static(path.join(__dirname, "./client/build")));
 
 app.use("/products", productRoute);
 
@@ -32,11 +28,6 @@ mongoose
   )
   .catch((error) => console.log(error.message));
 
-app.use(express.static(path.join(__dirname, "./client/build")));
-
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
-
-// mongoose.set("useFindAndModify", false);
-// DB_URL=mongodb://localhost:27017/memory
