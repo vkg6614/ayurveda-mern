@@ -22,12 +22,6 @@ app.use(cors());
 
 app.use("/products", productRoute);
 
-app.use(express.static(path.join(__dirname, "./client/build")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
-
 mongoose
   .connect(process.env.DB_URL, {
     useNewUrlParser: true,
@@ -37,6 +31,12 @@ mongoose
     app.listen(port, () => console.log(`server running on port ${port}`))
   )
   .catch((error) => console.log(error.message));
+
+app.use(express.static(path.join(__dirname, "./client/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
 
 // mongoose.set("useFindAndModify", false);
 // DB_URL=mongodb://localhost:27017/memory
